@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:meuapp/controller/course_controller.dart';
 import 'package:meuapp/model/course_model.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:meuapp/view/feriado_page.dart';
 
 import 'form_new_course_page.dart';
+import 'package:path/path.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -44,9 +46,29 @@ class _HomePageState extends State<HomePage> {
               ),
               ListTile(
                 title: const Text('Home'),
-                onTap: () {
-                   Navigator.pop(context); // Fecha o Drawer
-                },
+                 onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(),
+                      ),
+                    ).then((value) {
+                      coursesFuture = getCourses();
+                      setState(() {});
+                    });
+                  }
+              ),
+              ListTile(
+                title: const Text('Feriados'),
+                 onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FeriadoPage(),
+                      ),
+                    ).then((value) {
+                    });
+                 }
               ),
               ListTile(
                 title: const Text('Criar novo curso'),
