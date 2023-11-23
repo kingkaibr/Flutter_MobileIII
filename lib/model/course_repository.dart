@@ -27,4 +27,13 @@ class CourseRepository {
       throw 'Problemas ao excluir curso';
     }
   }
+
+  postNewCourse(CourseEntity courseEntity) async {
+    final jsonCourse = jsonEncode(CourseEntity.toJson(courseEntity));
+    var response = await http.post(url, body: jsonCourse);
+    if (response.statusCode != 201) {
+    throw 'Problemas ao inserir curso';
+    }
+  }
+
 }

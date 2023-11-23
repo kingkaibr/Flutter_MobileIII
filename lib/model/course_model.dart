@@ -13,4 +13,14 @@ class CourseEntity {
         description: map['description'],
         start_at: map['start_at']);
   }
+
+  static Map<String, dynamic> toJson(CourseEntity courseEntity) {
+    Map<String, dynamic> json = {
+      'name': courseEntity.name,
+      'description': courseEntity.description,
+      'start_at': courseEntity.start_at,
+      };
+      return json;
+    }
+
 }

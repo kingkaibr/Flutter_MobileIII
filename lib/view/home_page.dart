@@ -3,6 +3,8 @@ import 'package:meuapp/controller/course_controller.dart';
 import 'package:meuapp/model/course_model.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import 'form_new_course_page.dart';
+
 class HomePage extends StatefulWidget {
   HomePage({super.key});
 
@@ -28,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Meu app"),
+          title: const Text("Meu App"),
         ),
         drawer: Drawer(
           child: ListView(
@@ -38,22 +40,29 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                   color: Colors.blue,
                 ),
-                child: Text('Drawer Header'),
+                child: Text('Meu App'),
               ),
               ListTile(
-                title: const Text('Item 1'),
+                title: const Text('Home'),
                 onTap: () {
-                  // Update the state of the app.
-                  // ...
+                   Navigator.pop(context); // Fecha o Drawer
                 },
               ),
               ListTile(
-                title: const Text('Item 2'),
+                title: const Text('Criar novo curso'),
                 onTap: () {
-                  // Update the state of the app.
-                  // ...
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                  builder: (context) => const FormNewCoursePage(),
+                  ),
+                  ).then((value) {
+                  coursesFuture = getCourses();
+                  setState(() => {});
+                  });
                 },
               ),
+              
             ],
           ),
         ),
